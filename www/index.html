@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <title>Alerta</title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
+    <link href="app.css" rel="stylesheet">
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCDSF206Paot5WEl5LbGNLT1xHFn91rWTU&sensor=true"></script>
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -18,12 +18,18 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
+    <!--  geolocation modules -->
+    <script src="components/geolocation/geolocation.module.js"></script>
+    <script src="components/geolocation/geolocation.service.js"></script>
+
+    <!--  app's js -->
+    <script src="app.js"></script>
+
+    <!-- geolocation controllers -->
+    <script src="geolocation/GeolocationShow.controller.js"></script>
+
   </head>
-  <body ng-app="starter">
+  <body ng-app="alerta">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
@@ -36,6 +42,7 @@
       are in the /templates folder (but you could also have templates inline in
       this html file if you'd like).
     -->
+
     <ion-nav-view></ion-nav-view>
   </body>
 </html>
