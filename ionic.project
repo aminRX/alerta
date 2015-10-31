@@ -1,4 +1,10 @@
 {
   "name": "alerta",
-  "app_id": ""
+  "app_id": "",
+    "watchPatterns": [
+    "!www/js/.#*",
+    "!www/**/.#*",
+    "!www/templates/.#*",
+    "!www/.#*"
+  ]
 }
