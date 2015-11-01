@@ -35,3 +35,31 @@ a.btn.btn-report {
   color: white;
   background-color: #F60;
 }
+
+#map-dot {
+  position: fixed;
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 0px;
+  width: 0px;
+  border-top: 20px solid #f60;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  z-index: 200;
+}
+
+#map-dot:before {
+  position: absolute;
+  content: ' ';
+  width: 20px;
+  height: 20px;
+  left: -10px;
+  top: -32px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #f60;
+}
