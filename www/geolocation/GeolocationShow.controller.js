@@ -1,4 +1,3 @@
-
 /**
  * @ngdoc controller
  * @name alerta.controller:GeolocationShowController
@@ -19,6 +18,7 @@
   function GeolocationShowController(geolocation) {
     var vm = this;
     vm.title = 'GeolocationShowController';
+    vm.report = report;
     activate();
 
     ////////////////
@@ -32,6 +32,17 @@
      */
     function activate() {
       geolocation.showGeolocation();
+    }
+
+    /**
+     * @ngdoct method
+     * @name alerta.controller:GeolocationShowController#report
+     * @methodOf alerta.controller:GeolocationShowController
+     * @description
+     * This function sends report location.
+     */
+    function report() {
+      console.log('Clicked! | From report function in controller');
     }
 
   }
