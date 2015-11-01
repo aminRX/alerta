@@ -42,7 +42,7 @@
      * This function sends report location.
      */
     function report() {
-      console.log('Clicked! | From report function in controller');
+      console.log(geolocation.getCenterPosition());
     }
 
   }
