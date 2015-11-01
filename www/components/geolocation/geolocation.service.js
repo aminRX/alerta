@@ -14,8 +14,10 @@
   geolocation.$inject = [];
 
   function geolocation() {
+    var map;
     var service = {
-      showGeolocation: showGeolocation
+      showGeolocation: showGeolocation,
+      getCenterPosition: getCenterPosition
     };
     return service;
 
@@ -33,11 +35,10 @@
       if (navigator.geolocation) {
 
         navigator.geolocation.getCurrentPosition(function(position) {
-          var map = new google.maps.Map(document.getElementById('map'), {
+          map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: position.coords.latitude, lng: position.coords.longitude},
             zoom: 18
           });
-          infoWindow.setPosition(pos);
           infoWindow.setContent('Location found.');
           map.setCenter(pos);
         }, function() {
@@ -49,6 +50,20 @@
       }
 		}
 
+    /**
+     * @ngdoc method
+     * @name alerta.Geolocation.service:geolocation#getCenterPosition
+     * @methodOf alerta.Geolocation.service:geolocation#showGeolocation
+     * @return {{latitude: Float, longitude: Float}}
+     * @description
+     * Get the center position in the map view.
+     */
+    function getCenterPosition() {
+      return {
+        latitude: map.getCenter().lat(),
+        longitude: map.getCenter().lng()
+      };
+    }
   }
 
 })();
