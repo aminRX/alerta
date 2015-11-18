@@ -1,6 +1,7 @@
 /**
  * @ngdoc service
  * @name alerta.Geolocation.geolocation
+ * @requires $window
  * @description
  * This Factory handle few services of geolocation.
  */
@@ -11,9 +12,9 @@
     .module('alerta.Geolocation')
     .factory('geolocation', geolocation);
 
-  geolocation.$inject = [];
+  geolocation.$inject = ['$window'];
 
-  function geolocation() {
+  function geolocation($window) {
     var map;
     var service = {
       showGeolocation: showGeolocation,
@@ -29,18 +30,14 @@
      * Display the map in the cliant position.
      */
     function showGeolocation() {
-      var infoWindow = new google.maps.InfoWindow({map: map});
-
-      // Try HTML5 geolocation.
-      if (navigator.geolocation) {
-
-        navigator.geolocation.getCurrentPosition(function(position) {
-          map = new google.maps.Map(document.getElementById('map'), {
+      var infoWindow = new $window.google.maps.InfoWindow({map: map});
+      if ($window.navigator.geolocation) {
+        $window.navigator.geolocation.getCurrentPosition(function(position) {
+          map = new $window.google.maps.Map(document.getElementById('map'), {
             center: {lat: position.coords.latitude, lng: position.coords.longitude},
             zoom: 18
           });
           infoWindow.setContent('Location found.');
-          map.setCenter(pos);
         }, function() {
           handleLocationError(true, infoWindow, map.getCenter());
         });
